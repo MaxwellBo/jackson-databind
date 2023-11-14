@@ -616,7 +616,19 @@ public enum MapperFeature implements ConfigFeature
      *
      * @since 2.13
      */
-    APPLY_DEFAULT_VALUES(true)
+    APPLY_DEFAULT_VALUES(true),
+
+
+    /**
+     * Feature that determines whether {@link ObjectReader} TODO
+     * <p>
+     * TODO
+     *<p>
+     * Feature is enabled by default.
+     *
+     * @since 2.17
+     */
+    LOCATION_IN_PROCESSING_EXCEPTION(true)
     ;
 
     private final boolean _defaultState;

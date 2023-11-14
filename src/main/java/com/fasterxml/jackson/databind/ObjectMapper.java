@@ -3277,6 +3277,9 @@ public class ObjectMapper
         try { // since 2.10 remove "impossible" IOException as per [databind#1675]
             return _readTreeAndClose(_jsonFactory.createParser(content));
         } catch (JsonProcessingException e) {
+            if (isEnabled(MapperFeature.LOCATION_IN_PROCESSING_EXCEPTION)) {
+                e.clearLocation();
+            }
             throw e;
         } catch (IOException e) { // shouldn't really happen but being declared need to
             throw JsonMappingException.fromUnexpectedIOE(e);
@@ -3845,6 +3848,9 @@ public class ObjectMapper
         try { // since 2.10 remove "impossible" IOException as per [databind#1675]
             return (T) _readMapAndClose(_jsonFactory.createParser(content), valueType);
         } catch (JsonProcessingException e) {
+            if (isEnabled(MapperFeature.LOCATION_IN_PROCESSING_EXCEPTION)) {
+                e.clearLocation();
+            }
             throw e;
         } catch (IOException e) { // shouldn't really happen but being declared need to
             throw JsonMappingException.fromUnexpectedIOE(e);
